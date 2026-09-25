@@ -5,78 +5,227 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amal Cherian Jacob | Embedded Systems Engineer</title>
     <style>
+        :root {
+            --bg-main: #0A1A2F;
+            --bg-dark: #091423;
+            --card-bg: #11263F;
+            --accent: #00E0FF;
+            --text-main: #FFFFFF;
+            --text-muted: #D0D8E0;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #0A1A2F;
-            color: #FFFFFF;
+            background-color: var(--bg-main);
+            color: var(--text-main);
         }
 
+        /* Header + Navbar */
         header {
-            background-color: #0A1A2F;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 3px solid #00E0FF;
+            background-color: var(--bg-main);
+            padding: 20px 40px;
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        header h1 {
-            font-size: 48px;
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand h1 {
+            font-size: 26px;
             margin: 0;
-            color: #00E0FF;
+            color: var(--accent);
         }
 
-        header p {
-            font-size: 20px;
-            margin-top: 10px;
-            color: #D0D8E0;
+        .brand p {
+            margin: 4px 0 0;
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
         nav {
-            text-align: center;
-            padding: 15px;
-            background-color: #091423;
-            border-bottom: 2px solid #00E0FF;
+            display: flex;
+            gap: 18px;
         }
 
         nav a {
-            color: #00E0FF;
-            margin: 0 15px;
+            color: var(--accent);
             text-decoration: none;
-            font-size: 18px;
+            font-size: 14px;
+            position: relative;
+            padding-bottom: 2px;
         }
 
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.2s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
         section {
-            padding: 50px 20px;
+            padding: 40px 20px;
+        }
+
+        .section-inner {
             max-width: 900px;
-            margin: auto;
+            margin: 0 auto;
         }
 
         h2 {
-            color: #00E0FF;
-            border-left: 5px solid #00E0FF;
+            color: var(--accent);
+            border-left: 5px solid var(--accent);
             padding-left: 10px;
+            margin-bottom: 20px;
+            font-size: 22px;
         }
 
         .card {
-            background-color: #11263F;
+            background-color: var(--card-bg);
             padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #00E0FF;
+            margin: 16px 0;
+            border-left: 4px solid var(--accent);
             border-radius: 6px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .card p {
+            margin: 6px 0;
+            font-size: 14px;
+            color: var(--text-muted);
         }
 
         .contact a {
-            color: #00E0FF;
+            color: var(--accent);
             text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #091423;
-            color: #D0D8E0;
-            margin-top: 40px;
-            border-top: 2px solid #00E0FF;
+            background-color: var(--bg-dark);
+            color: var(--text-muted);
+            border-top: 2px solid var(--accent);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 16px;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .brand h1 {
+                font-size: 22px;
+            }
+
+            .brand p {
+                font-size: 12px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            section {
+                padding: 28px 16px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+            }
+
+            .card p {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand h1 {
+                font-size: 20px;
+            }
+
+            .brand p {
+                font-size: 11px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .card {
+                margin: 12px 0;
+            }
         }
     </style>
 </head>
@@ -84,110 +233,125 @@
 <body>
 
 <header>
-    <h1>Amal Cherian Jacob</h1>
-    <p>Embedded Systems & Electronics Engineer • UAV Firmware • IoT Systems • STM32 Bare-Metal</p>
+    <div class="header-inner">
+        <div class="brand">
+            <h1>Amal Cherian Jacob</h1>
+            <p>Embedded Systems & Electronics Engineer • UAV Firmware • IoT Systems • STM32 Bare-Metal</p>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
 </header>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#contact">Contact</a>
-</nav>
-
 <section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-        <p>I’m an Embedded Systems Engineer with hands-on experience across the hardware–software stack — from bare‑metal ARM Cortex firmware to IoT sensor pipelines and UAV autopilot development.</p>
-        <p>“Drawn to problems that require both circuit-level thinking and clean software design.”</p>
-        <p><strong>M.Tech Embedded Systems</strong> — NIELIT Calicut (CGPA: 8.05/10)</p>
-        <p><strong>B.Tech Electronics & Communication</strong> — Amal Jyothi College of Engineering (CGPA: 7.26/10)</p>
+    <div class="section-inner">
+        <h2>About Me</h2>
+        <div class="card">
+            <p>I’m an Embedded Systems Engineer with hands-on experience across the hardware–software stack — from bare‑metal ARM Cortex firmware to IoT sensor pipelines and UAV autopilot development.</p>
+            <p>“Drawn to problems that require both circuit-level thinking and clean software design.”</p>
+            <p><strong>M.Tech Embedded Systems</strong> — NIELIT Calicut (CGPA: 8.05/10)</p>
+            <p><strong>B.Tech Electronics & Communication</strong> — Amal Jyothi College of Engineering (CGPA: 7.26/10)</p>
+        </div>
     </div>
 </section>
 
 <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="card">
-        <p><strong>Languages:</strong> C, C++, Python, MicroPython, STM32 register-level</p>
-        <p><strong>Microcontrollers:</strong> STM32G474RE, ESP32, Arduino UNO</p>
-        <p><strong>Protocols:</strong> UART, SPI, I2C, ADC/GPIO, WiFi, MAVLink</p>
-        <p><strong>Tools:</strong> STM32CubeIDE, PX4 Autopilot, QGroundControl, Gazebo SITL, Vivado, Linux, VS Code</p>
-        <p><strong>Debugging:</strong> Oscilloscope, Logic Analyzer, UART Serial Debugging</p>
+    <div class="section-inner">
+        <h2>Technical Skills</h2>
+        <div class="card">
+            <p><strong>Languages:</strong> C, C++, Python, MicroPython, STM32 register-level</p>
+            <p><strong>Microcontrollers:</strong> STM32G474RE, ESP32, Arduino UNO</p>
+            <p><strong>Protocols:</strong> UART, SPI, I2C, ADC/GPIO, WiFi, MAVLink</p>
+            <p><strong>Tools:</strong> STM32CubeIDE, PX4 Autopilot, QGroundControl, Gazebo SITL, Vivado, Linux, VS Code</p>
+            <p><strong>Debugging:</strong> Oscilloscope, Logic Analyzer, UART Serial Debugging</p>
+        </div>
     </div>
 </section>
 
 <section id="projects">
-    <h2>Projects</h2>
+    <div class="section-inner">
+        <h2>Projects</h2>
 
-    <div class="card">
-        <h3>Autonomous Intermediate Battery Charging System for UAVs</h3>
-        <p>Modified PX4 firmware (C/C++) to enable mid‑mission waypoint diversion to autonomous charging stations.</p>
-        <p>Integrated MAVLink telemetry and validated behaviour in Gazebo SITL + QGroundControl.</p>
-    </div>
+        <div class="card">
+            <h3>Autonomous Intermediate Battery Charging System for UAVs</h3>
+            <p>Modified PX4 firmware (C/C++) to enable mid‑mission waypoint diversion to autonomous charging stations.</p>
+            <p>Integrated MAVLink telemetry and validated behaviour in Gazebo SITL + QGroundControl.</p>
+        </div>
 
-    <div class="card">
-        <h3>Smart Helmet – Alcohol Detection & Engine Cut-off</h3>
-        <p>STM32 node processes MQ3 sensor data → sends UART signal to ESP32 → relay cuts engine.</p>
-        <p>Includes wear‑compliance detection using secondary sensor.</p>
-    </div>
+        <div class="card">
+            <h3>Smart Helmet – Alcohol Detection & Engine Cut-off</h3>
+            <p>STM32 node processes MQ3 sensor data → sends UART signal to ESP32 → relay cuts engine.</p>
+            <p>Includes wear‑compliance detection using secondary sensor.</p>
+        </div>
 
-    <div class="card">
-        <h3>Gas Leakage Detection System – STM32 ARM Cortex-M4</h3>
-        <p>Bare‑metal firmware (no HAL). MQ135 via ADC → threshold logic → buzzer + LED alerts.</p>
-        <p>“Demonstrates direct register-level programming of ADC, GPIO, and UART peripherals.”</p>
-    </div>
+        <div class="card">
+            <h3>Gas Leakage Detection System – STM32 ARM Cortex-M4</h3>
+            <p>Bare‑metal firmware (no HAL). MQ135 via ADC → threshold logic → buzzer + LED alerts.</p>
+            <p>Demonstrates direct register-level programming of ADC, GPIO, and UART peripherals.</p>
+        </div>
 
-    <div class="card">
-        <h3>Remote Weather Monitoring System – ESP32 IoT</h3>
-        <p>DHT sensor → WiFi TCP/IP → live Blynk dashboard with sub‑second latency.</p>
-    </div>
+        <div class="card">
+            <h3>Remote Weather Monitoring System – ESP32 IoT</h3>
+            <p>DHT sensor → WiFi TCP/IP → live Blynk dashboard with sub‑second latency.</p>
+        </div>
 
-    <div class="card">
-        <h3>Smart Automated Clothesline – ESP32 Dual Motor Control</h3>
-        <p>Rain + LDR sensor fusion → automatic extension/retraction using L298N motor driver.</p>
-    </div>
+        <div class="card">
+            <h3>Smart Automated Clothesline – ESP32 Dual Motor Control</h3>
+            <p>Rain + LDR sensor fusion → automatic extension/retraction using L298N motor driver.</p>
+        </div>
 
-    <div class="card">
-        <h3>Automated Waste Segregation System – Arduino</h3>
-        <p>Inductive + capacitive sensors classify waste → servo-actuated bin gates.</p>
+        <div class="card">
+            <h3>Automated Waste Segregation System – Arduino</h3>
+            <p>Inductive + capacitive sensors classify waste → servo-actuated bin gates.</p>
+        </div>
     </div>
 </section>
 
 <section id="experience">
-    <h2>Experience</h2>
+    <div class="section-inner">
+        <h2>Experience</h2>
 
-    <div class="card">
-        <h3>Intern — ADNOC Distribution (2026–Present)</h3>
-        <p>Root cause analysis of failures in EV charging systems.</p>
-        <p>Firmware-stage analysis during charging cycles.</p>
-    </div>
+        <div class="card">
+            <h3>Intern — ADNOC Distribution (2026–Present)</h3>
+            <p>Root cause analysis of failures in EV charging systems.</p>
+            <p>Firmware-stage analysis during charging cycles.</p>
+        </div>
 
-    <div class="card">
-        <h3>Intern — Unique World Robotics (2024)</h3>
-        <p>Built VR training environments for Oculus using Roblox Studio, Lua, and Python.</p>
-        <p>Contributed to published research (IJERA, May 2024).</p>
+        <div class="card">
+            <h3>Intern — Unique World Robotics (2024)</h3>
+            <p>Built VR training environments for Oculus using Roblox Studio, Lua, and Python.</p>
+            <p>Contributed to published research (IJERA, May 2024).</p>
+        </div>
     </div>
 </section>
 
 <section id="achievements">
-    <h2>Achievements & Certifications</h2>
-    <div class="card">
-        <p>GATE 2024 Qualified — Electronics & Communication</p>
-        <p>Published: Fire Guard VR — Immersive Fire Extinguisher Training (IJERA)</p>
-        <p>IEEE SB Knockout 2.0 — Coding Winner</p>
-        <p>District Winner — Young Innovators Program (YIP 4.0)</p>
+    <div class="section-inner">
+        <h2>Achievements & Certifications</h2>
+        <div class="card">
+            <p>GATE 2024 Qualified — Electronics & Communication</p>
+            <p>Published: Fire Guard VR — Immersive Fire Extinguisher Training (IJERA)</p>
+            <p>IEEE SB Knockout 2.0 — Coding Winner</p>
+            <p>District Winner — Young Innovators Program (YIP 4.0)</p>
+        </div>
     </div>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <div class="card contact">
-        <p><strong>Email:</strong> <a href="mailto:amalcherianjacobofficial@gmail.com">amalcherianjacobofficial@gmail.com</a></p>
-        <p><strong>Phone:</strong> +91 7994849375 / +971 565645039</p>
-        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/amal-cherian-jacob">linkedin.com/in/amal-cherian-jacob</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/Amal-Hex">github.com/Amal-Hex</a></p>
+    <div class="section-inner">
+        <h2>Contact</h2>
+        <div class="card contact">
+            <p><strong>Email:</strong> <a href="mailto:amalcherianjacobofficial@gmail.com">amalcherianjacobofficial@gmail.com</a></p>
+            <p><strong>Phone:</strong> +91 7994849375 / +971 565645039</p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/amal-cherian-jacob">linkedin.com/in/amal-cherian-jacob</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/Amal-Hex">github.com/Amal-Hex</a></p>
+        </div>
     </div>
 </section>
 
